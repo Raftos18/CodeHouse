@@ -7,18 +7,11 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-
-	"github.com/Raftos18/authentication"
-	"github.com/Raftos18/posts"
+	
+	"github.com/Raftos18/CodeHouse/posts"
 )
 
 func main() {
-	var role authentication.Role
-	(&role).SetPermission("Admin")
-	(&role).SetLevel(5)
-	fmt.Printf("Role: %s\r\n", role.GetPermission())
-	fmt.Printf("Level: %d\r\n", role.GetLevel())
-
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 

@@ -46,8 +46,9 @@ func PostPath(postID string) string {
 
 // CreatePost creates a new post struct
 func CreatePost(title, author, text, category, image string) Post {
+	uid, _:= uuid.NewV4()
 	return Post{
-		uuid.NewV4().String(),
+		uid.String(),
 		title,
 		author,
 		time.Now().Local().Format("2006-01-02"),
@@ -134,8 +135,9 @@ func EditPost(id, title, content, category, image string) bool {
 
 // CreateComment creates a new comment
 func CreateComment(userID string, text string, isReply bool) Comment {
+	uid, _:= uuid.NewV4()
 	return Comment{
-		uuid.NewV4().String(),
+		uid.String(),
 		userID,
 		text,
 		isReply,
